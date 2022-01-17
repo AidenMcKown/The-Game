@@ -88,6 +88,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 	public void StartGame()
 	{
 		PhotonNetwork.LoadLevel(1);
+		//this may not be the best place to put this, but it will do for now
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	public void LeaveRoom()
