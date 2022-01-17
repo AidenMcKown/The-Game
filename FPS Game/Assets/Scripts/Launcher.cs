@@ -39,7 +39,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 	public override void OnJoinedLobby()
 	{
-		MenuManager.Instance.OpenMenu("title");
+		MenuManager.Instance.OpenMenu("start");
 		Debug.Log("Joined Lobby");
 	}
 
