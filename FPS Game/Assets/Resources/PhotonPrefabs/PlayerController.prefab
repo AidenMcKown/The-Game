@@ -706,6 +706,7 @@ MonoBehaviour:
   items:
   - {fileID: 6732414030161505931}
   - {fileID: 3968076902418886796}
+  PauseMenuKey: 112
 --- !u!114 &7329530377389747120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,7 +1938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: 
+  menuName: pause
   open: 0
 --- !u!1 &8227353499824922674
 GameObject:

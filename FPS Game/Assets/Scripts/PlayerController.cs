@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
 	[SerializeField] Item[] items;
+
+	[SerializeField] KeyCode PauseMenuKey = KeyCode.P;
 
 	int itemIndex;
 	int previousItemIndex = -1;
@@ -105,6 +107,25 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		if(transform.position.y < -10f) // Die if you fall out of the world
 		{
 			Die();
+		}
+
+		 
+		if(Input.GetKeyDown(PauseMenuKey))
+		{
+			MenuManager.Instance.OpenMenu("pause");
+
+			Cursor.lockState = CursorLockMode.None;
+
+			
+			if(Input.GetKeyDown(PauseMenuKey))
+			{
+				
+
+				Cursor.lockState = CursorLockMode.Locked;
+
+			}
+
+
 		}
 	}
 
@@ -203,4 +224,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	{
 		playerManager.Die();
 	}
+	
+	
+		
 }
