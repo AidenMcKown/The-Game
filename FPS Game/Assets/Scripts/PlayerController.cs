@@ -19,11 +19,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
 	[SerializeField] KeyCode PauseMenuKey = KeyCode.P;
 
+	[SerializeField] Menu[] menus;
+
 	int itemIndex;
 	int previousItemIndex = -1;
 
 	float verticalLookRotation;
 	bool grounded;
+	bool pauseMenuOpen;
 	Vector3 smoothMoveVelocity;
 	Vector3 moveAmount;
 
@@ -35,6 +38,19 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	float currentHealth = maxHealth;
 
 	PlayerManager playerManager;
+
+	public void setpause(string bolean){
+
+		if (bolean == "true"){
+			pauseMenuOpen = true;
+		}
+
+		if (bolean == "false"){
+			pauseMenuOpen = false;
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+
+	}
 
 	void Awake()
 	{
@@ -63,9 +79,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		if(!PV.IsMine)
 			return;
 
-		Look();
-		Move();
-		Jump();
+
+		if (!pauseMenuOpen){
+			Look();
+			Move();
+			Jump();
+		}
+		
 
 		for(int i = 0; i < items.Length; i++)
 		{
@@ -110,23 +130,30 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		}
 
 		 
-		if(Input.GetKeyDown(PauseMenuKey))
-		{
-			MenuManager.Instance.OpenMenu("pause");
 
-			Cursor.lockState = CursorLockMode.None;
-
-			
-			if(Input.GetKeyDown(PauseMenuKey))
+		if(Input.GetKeyDown(PauseMenuKey) && pauseMenuOpen)
 			{
-				
-
+				MenuManager.Instance.CloseMenu("pause");
 				Cursor.lockState = CursorLockMode.Locked;
+				pauseMenuOpen = false;
+				return;
 
 			}
 
 
+
+		if(Input.GetKeyDown(PauseMenuKey) && !pauseMenuOpen)
+		{
+			MenuManager.Instance.OpenMenu("pause");
+			Cursor.lockState = CursorLockMode.None;
+			pauseMenuOpen = true;
+			return;
+			
 		}
+
+
+		
+
 	}
 
 	void Look()
