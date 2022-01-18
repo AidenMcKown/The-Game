@@ -3,7 +3,27 @@ guid: 48114bab7aac9a7498754a0c9027fae5
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_ceruleanblue
+    second: {fileID: 2100000, guid: ed204c05c93cb02448f6ee12384a1540, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_maroon
+    second: {fileID: 2100000, guid: 2d9233d5e2164ed43aac0ac430bfe32c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_silver
+    second: {fileID: 2100000, guid: 2781826aa6e74d54aad2ce504672e9fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_stone
+    second: {fileID: 2100000, guid: 9d28032a113a77f4395587b0155f295b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

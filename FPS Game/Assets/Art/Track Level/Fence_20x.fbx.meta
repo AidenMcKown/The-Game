@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf913c4f9a8b7ec449fad89c696ba4e8
+guid: b6263766518b88542ae1df029df78a50
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_yellow
-    second: {fileID: 2100000, guid: bb91e9c185280b541bcb85b88861e37a, type: 2}
+      name: mat_darkgrey
+    second: {fileID: 2100000, guid: 6c38b28d609cf6f44b9e9f672ac59df9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_wirefence
+    second: {fileID: 2100000, guid: a6022215759c2454f804712fa8f64d48, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

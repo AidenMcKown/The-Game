@@ -3,7 +3,12 @@ guid: 8452b3c9b82c43f4b866ea0bcf2bb0a9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_ceruleanblue
+    second: {fileID: 2100000, guid: ed204c05c93cb02448f6ee12384a1540, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
