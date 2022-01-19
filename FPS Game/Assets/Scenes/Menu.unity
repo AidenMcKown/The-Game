@@ -1497,6 +1497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520157951}
   - component: {fileID: 520157952}
+  - component: {fileID: 520157953}
   m_Layer: 5
   m_Name: TitleMenu
   m_TagString: Untagged
@@ -1538,6 +1539,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: title
   open: 0
+--- !u!114 &520157953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520157950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6bd04ac76800244ad38e233da8a5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMenuKey: 27
 --- !u!1 &527412674
 GameObject:
   m_ObjectHideFlags: 0
