@@ -142,7 +142,7 @@ public class Weapon : MonoBehaviourPunCallbacks
         {
             GameObject newHole = Instantiate(bulletHolePrefab, hit.point + hit.normal * 0.001f, Quaternion.identity) as GameObject;
             newHole.transform.LookAt(hit.point + hit.normal);
-            if(hit.collider.gameObject.layer == 11)
+            if(hit.collider.gameObject.layer == 12)
             {
                 Destroy(newHole, 0.01f);
             }
@@ -154,7 +154,7 @@ public class Weapon : MonoBehaviourPunCallbacks
             if(photonView.IsMine)
             {
                 //shooting other player on network
-                if(hit.collider.gameObject.layer == 11)
+                if(hit.collider.gameObject.layer == 12)
                 {
                     hit.collider.gameObject.GetPhotonView().RPC("TakeDamage", RpcTarget.All, loadout[currentIndex].damage);
                 }

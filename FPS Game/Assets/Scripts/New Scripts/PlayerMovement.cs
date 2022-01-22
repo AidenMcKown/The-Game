@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         currentHealth = maxHealth;
 
         cameraParent.SetActive(photonView.IsMine);
-        if(!photonView.IsMine) gameObject.layer = 11;
+        if(!photonView.IsMine) gameObject.layer = 12;
 
         baseFOV = normalCam.fieldOfView;
         rig = GetComponent<Rigidbody>();
