@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1304692493815339744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545130279303991487}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Resources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3037440468826409981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ADS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8351260365534733828}
   - component: {fileID: 2330616299747944676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7023784667396358856}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4417038396904454063}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2559654227668865381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Design
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,10 +240,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2559654227668865381}
     m_Modifications:
+    - target: {fileID: 1940332495354254963, guid: a26670f49fe32284a802feb905b8a239,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7449158290725908138, guid: a26670f49fe32284a802feb905b8a239,
         type: 3}
       propertyPath: m_Name
       value: M9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449158290725908138, guid: a26670f49fe32284a802feb905b8a239,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7794439385716356112, guid: a26670f49fe32284a802feb905b8a239,
         type: 3}

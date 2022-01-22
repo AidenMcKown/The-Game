@@ -148,7 +148,7 @@ public class Weapon : MonoBehaviourPunCallbacks
             }
             else
             {
-                Destroy(newHole, 3f);
+                Destroy(newHole, 5f);
             }
 
             if(photonView.IsMine)
@@ -162,8 +162,11 @@ public class Weapon : MonoBehaviourPunCallbacks
         }
 
         //gun effects(recoil and kickback)
-        currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
-        currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
+        if (currentWeapon != null)
+        {
+            currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
+            currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
+        }
     }
 
     [PunRPC]

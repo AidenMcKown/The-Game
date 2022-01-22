@@ -17,7 +17,7 @@ public class Sway : MonoBehaviourPunCallbacks
     }
     private void Update() 
     {
-        if(!photonView.IsMine) return;
+        //if(!photonView.IsMine) return;
 
         UpdateSway();
     }
