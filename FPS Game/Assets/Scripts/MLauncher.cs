@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -6,9 +6,9 @@ using TMPro;
 using Photon.Realtime;
 using System.Linq;
 
-public class Launcher : MonoBehaviourPunCallbacks
+public class MLauncher : MonoBehaviourPunCallbacks
 {
-	public static Launcher Instance;
+	public static MLauncher Instance;
 
 	[SerializeField] TMP_InputField roomNameInputField;
 	[SerializeField] TMP_Text errorText;
