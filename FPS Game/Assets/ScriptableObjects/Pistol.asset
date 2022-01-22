@@ -17,7 +17,7 @@ MonoBehaviour:
   ammo: 9999
   clipSize: 20
   fireRate: 0.12
-  bloom: 20
+  bloom: 15
   recoil: 10
   kickback: 0.15
   aimSpeed: 20
