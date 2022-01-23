@@ -92,6 +92,12 @@ public class MLauncher : MonoBehaviourPunCallbacks
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
+	public void BeginMatch()
+	{
+		PhotonNetwork.LoadLevel(2);
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
 	public void LeaveRoom()
 	{
 		PhotonNetwork.LeaveRoom();
