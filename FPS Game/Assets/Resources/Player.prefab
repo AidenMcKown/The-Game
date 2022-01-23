@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   sprintModifier: 250
-  jumpForce: 800
+  jumpForce: 400
   maxHealth: 100
   normalCam: {fileID: 8004256443242283975}
   cameraParent: {fileID: 2354839306145834948}
