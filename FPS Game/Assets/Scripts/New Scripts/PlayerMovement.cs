@@ -231,6 +231,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             }
         }
 
+        // Actual movement
         Vector3 targetVelocity = direction * adjustedSpeed * Time.deltaTime;
         targetVelocity.y = rig.velocity.y;
         rig.velocity = targetVelocity;

@@ -137,6 +137,7 @@ public class Weapon : MonoBehaviourPunCallbacks
         
         
         // raycast
+        
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(spawn.position, bloom, out hit, 1000f, canBeShot))
         {
@@ -144,7 +145,7 @@ public class Weapon : MonoBehaviourPunCallbacks
             newHole.transform.LookAt(hit.point + hit.normal);
             if(hit.collider.gameObject.layer == 12)
             {
-                Destroy(newHole, 0.01f);
+                Destroy(newHole, 0.1f);
             }
             else
             {
