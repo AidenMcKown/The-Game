@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviourPunCallbacks
+public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region Variables
     public float speed;
@@ -54,9 +54,27 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     private Vector3 slideDirection;
     private float currentCooldown;
 
+    private float aimAngle;
+
     [SerializeField] KeyCode shiftKey = KeyCode.LeftShift;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode crouchKey = KeyCode.LeftControl;
+
+    #endregion
+
+    #region Photon Callbacks
+
+    public void OnPhotonSerializeView(PhotonStream p_stream, PhotonMessageInfo p_message) 
+    {
+        if (p_stream.IsWriting)
+        {
+            p_stream.SendNext((int)(weaponParent.transform.localEulerAngles.x * 100f));
+        }
+        else
+        {
+            aimAngle = (int)p_stream.ReceiveNext() / 100f;
+        }
+    }
 
     #endregion
 
@@ -95,7 +113,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void Update() 
     {
-        if(!photonView.IsMine) return;
+        if(!photonView.IsMine) 
+        {
+            RefreshMultiplayerState();
+            return;
+        }
         
         // Input
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
@@ -270,6 +292,20 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     #endregion
 
     #region Private Methods
+
+    void RefreshMultiplayerState()
+    {
+        float cacheEulY = weaponParent.localEulerAngles.y;
+
+        Quaternion targetRotation = Quaternion.identity * Quaternion.AngleAxis(aimAngle, Vector3.right);
+        weaponParent.rotation = Quaternion.Slerp(weaponParent.rotation, targetRotation, Time.deltaTime * 8f);
+
+        Vector3 finalRotation = weaponParent.localEulerAngles;
+        finalRotation.y = cacheEulY;
+
+        weaponParent.localEulerAngles = finalRotation;
+    }
+
     void HeadBob(float p_z, float p_xIntensity, float p_yIntensity)
     {
         targetWeaponBobPosition = weaponParentCurrentPosition + new Vector3 (Mathf.Cos(p_z) * p_xIntensity, Mathf.Sin(p_z * 2) * p_yIntensity, 0);
