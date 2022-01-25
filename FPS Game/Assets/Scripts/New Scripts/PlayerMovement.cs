@@ -282,7 +282,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void SetCrouch (bool p_state)
+    private void SetCrouch(bool p_state)
     {
         if (crouched == p_state) return;
 

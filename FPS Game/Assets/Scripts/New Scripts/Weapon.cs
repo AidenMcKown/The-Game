@@ -32,11 +32,11 @@ public class Weapon : MonoBehaviourPunCallbacks
 
     void Update()
     {   
-        if (photonView.IsMine && Input.GetKeyDown(loadoutKey)) 
+        
+        if (photonView.IsMine && currentWeapon == null) // Input.GetKeyDown(loadoutKey)) 
         { 
             photonView.RPC("Equip", RpcTarget.All, 0);
             
-        
         }
         
         if (currentWeapon != null)
@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                 
                 if(Input.GetMouseButtonDown(0) && currentCooldown <= 0)
                 {
-                    if (loadout[currentIndex].FireBullet()) photonView.RPC("Shoot", RpcTarget.All);
+                    if (loadout[currentIndex].FireBullet()) { photonView.RPC("Shoot", RpcTarget.All); }
                     else StartCoroutine(Reload(loadout[currentIndex].reloadTime)); 
                 } 
 
