@@ -9162,6 +9162,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74edcf9cf8a8eaf41aa8a42e788ecad2, type: 3}
+--- !u!1001 &1344280329767673766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3305792597199976075, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Fountain
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.626644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6058347
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.59736
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583340353128887531, guid: fcc7b5cd05d5ef14b8babc9159aadefd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcc7b5cd05d5ef14b8babc9159aadefd, type: 3}
 --- !u!1001 &5946747549329843922
 PrefabInstance:
   m_ObjectHideFlags: 0
