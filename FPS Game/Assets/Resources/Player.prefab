@@ -496,7 +496,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: adb860d85a220bb40958e89e774128b6, type: 2}
   weaponParent: {fileID: 79662519745721558}
   loadoutKey: 49
-  bulletHolePrefab: {fileID: 7261888647272865576, guid: 825add5639b088a4e86d69688111caca,
+  bulletHolePrefab: {fileID: 7261888647272865576, guid: 6d06a4f685109ab4390307cad516502e,
     type: 3}
   canBeShot:
     serializedVersion: 2

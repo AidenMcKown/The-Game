@@ -21,5 +21,5 @@ MonoBehaviour:
   recoil: 10
   kickback: 0.15
   aimSpeed: 20
-  prefab: {fileID: 7231208875575162632, guid: aeb16f3d00d5dcd4cbbca50c43eb28c2, type: 3}
+  prefab: {fileID: 3481904955408773825, guid: 4bf8eb01ed006fa4ca030c324d589dd4, type: 3}
   reloadTime: 1.5
