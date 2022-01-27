@@ -500,7 +500,7 @@ MonoBehaviour:
     type: 3}
   canBeShot:
     serializedVersion: 2
-    m_Bits: 4624
+    m_Bits: 4625
   reloadKey: 114
 --- !u!114 &4516173694987352603
 MonoBehaviour:
