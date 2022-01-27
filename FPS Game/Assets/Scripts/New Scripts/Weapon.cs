@@ -178,8 +178,9 @@ public class Weapon : MonoBehaviourPunCallbacks
             //gun effects(recoil and kickback)
             if (currentWeapon != null)
             {
-                currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
-                currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
+                currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
+                //currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
+                //currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
             }
         }
     }
