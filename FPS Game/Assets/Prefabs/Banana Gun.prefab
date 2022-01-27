@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1779133196070711555}
   - component: {fileID: 7713605964684316070}
+  - component: {fileID: 4611599450890753736}
   m_Layer: 10
   m_Name: Banana Gun
   m_TagString: Untagged
@@ -138,6 +139,25 @@ MonoBehaviour:
   intensity: 4
   returnToNormal: 10
   isMine: 0
+--- !u!95 &4611599450890753736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481904955408773825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27898328f3578d6479f60260991ebb29, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3935688515144007825
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,9 +327,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c6a7aeb82432c44bff7fbd540de816, type: 3}
+--- !u!1 &2371434438151297532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3988228341254989065, guid: 45c6a7aeb82432c44bff7fbd540de816,
+    type: 3}
+  m_PrefabInstance: {fileID: 1706881323307957493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3144312580719412038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4328759854426914739, guid: 45c6a7aeb82432c44bff7fbd540de816,
     type: 3}
   m_PrefabInstance: {fileID: 1706881323307957493}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &9108615609906981553
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371434438151297532}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

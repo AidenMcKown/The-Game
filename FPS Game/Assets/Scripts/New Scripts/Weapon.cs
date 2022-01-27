@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviourPunCallbacks
 
     private bool isReloading = false;
 
-
+    
     #endregion
 
     #region MonoBehavior Callbacks
@@ -71,14 +71,22 @@ public class Weapon : MonoBehaviourPunCallbacks
 
     IEnumerator Reload(float p_wait)
     {
+        if(!isReloading && loadout[currentIndex].clipSize != loadout[currentIndex].GetClip())
+        {
         isReloading = true;
-        currentWeapon.SetActive(false);
 
+        
+        currentWeapon.GetComponent<Animator>().Play("Reload", 0, 0);
+    
+        
         yield return new WaitForSeconds(p_wait);
-
+        
         loadout[currentIndex].Reload();
+        
         currentWeapon.SetActive(true);
+
         isReloading = false;
+        }
     }
     
     [PunRPC]
@@ -107,15 +115,18 @@ public class Weapon : MonoBehaviourPunCallbacks
             Transform stateADS = currentWeapon.transform.Find("States/ADS");
             Transform stateHip = currentWeapon.transform.Find("States/Hip");
 
-            if (isAiming)
+            if (!isReloading)
             {
-                // ads
-                anchor.position = Vector3.Lerp(anchor.position, stateADS.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
-            }
-            else
-            {
-                // hip
-                anchor.position = Vector3.Lerp(anchor.position, stateHip.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+                if (isAiming)
+                {
+                    // ads
+                    anchor.position = Vector3.Lerp(anchor.position, stateADS.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+                }
+                else
+                {
+                    // hip
+                    anchor.position = Vector3.Lerp(anchor.position, stateHip.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+                }
             }
         }
     }
@@ -123,50 +134,53 @@ public class Weapon : MonoBehaviourPunCallbacks
     [PunRPC]
     void Shoot()
     {
-        Transform spawn = transform.Find("Cameras/Normal Camera");
+        if (!isReloading)
+         {
+            Transform spawn = transform.Find("Cameras/Normal Camera");
 
-        // bloom
-        Vector3 bloom = spawn.position + spawn.forward * 1000f;
-        bloom += Random.Range(-loadout[currentIndex].bloom, loadout[currentIndex].bloom) *spawn.up;
-        bloom += Random.Range(-loadout[currentIndex].bloom, loadout[currentIndex].bloom) *spawn.right;
-        bloom -= spawn.position;
-        bloom.Normalize();
+            // bloom
+            Vector3 bloom = spawn.position + spawn.forward * 1000f;
+            bloom += Random.Range(-loadout[currentIndex].bloom, loadout[currentIndex].bloom) *spawn.up;
+            bloom += Random.Range(-loadout[currentIndex].bloom, loadout[currentIndex].bloom) *spawn.right;
+            bloom -= spawn.position;
+            bloom.Normalize();
 
-        // cooldown
-        currentCooldown = loadout[currentIndex].fireRate;
-        
-        
-        // raycast
-        
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(spawn.position, bloom, out hit, 1000f, canBeShot))
-        {
-            GameObject newHole = Instantiate(bulletHolePrefab, hit.point + hit.normal * 0.001f, Quaternion.identity) as GameObject;
-            newHole.transform.LookAt(hit.point + hit.normal);
-            if(hit.collider.gameObject.layer == 12)
+            // cooldown
+            currentCooldown = loadout[currentIndex].fireRate;
+            
+            
+            // raycast
+            
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(spawn.position, bloom, out hit, 1000f, canBeShot))
             {
-                Destroy(newHole, 0.1f);
-            }
-            else
-            {
-                Destroy(newHole, 5f);
-            }
-
-            if(photonView.IsMine)
-            {
-                //shooting other player on network
+                GameObject newHole = Instantiate(bulletHolePrefab, hit.point + hit.normal * 0.001f, Quaternion.identity) as GameObject;
+                newHole.transform.LookAt(hit.point + hit.normal);
                 if(hit.collider.gameObject.layer == 12)
                 {
-                    hit.collider.transform.root.gameObject.GetPhotonView().RPC("TakeDamage", RpcTarget.All, loadout[currentIndex].damage);
+                    Destroy(newHole, 0.1f);
+                }
+                else
+                {
+                    Destroy(newHole, 5f);
+                }
+
+                if(photonView.IsMine)
+                {
+                    //shooting other player on network
+                    if(hit.collider.gameObject.layer == 12)
+                    {
+                        hit.collider.transform.root.gameObject.GetPhotonView().RPC("TakeDamage", RpcTarget.All, loadout[currentIndex].damage);
+                    }
                 }
             }
-        }
 
-        //gun effects(recoil and kickback)
-        if (currentWeapon != null)
-        {
-            currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
-            currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
+            //gun effects(recoil and kickback)
+            if (currentWeapon != null)
+            {
+                currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
+                currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
+            }
         }
     }
 
