@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public float crouchAmount;
     public GameObject standingCollider;
     public GameObject crouchingCollider;
+    public GameObject standingMesh;
+    public GameObject crouchingMesh;
+    public GameObject glasses;
 
     private Transform uiHealthBar;
     private Text uiAmmo;
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     private float sprintFOVModifier = 1.25f;
     private Vector3 origin;
 
-    public int currentHealth;
+    private int currentHealth;
 
     private Manager manager;
     private Weapon weapon;
@@ -55,6 +58,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     private float currentCooldown;
 
     private float aimAngle;
+
+    [SerializeField] ParticleSystem speedlines = null;
 
     [SerializeField] KeyCode shiftKey = KeyCode.LeftShift;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -81,6 +86,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     #region MonoBehaviorCallbacks
     void Start()
     {
+        glasses.SetActive(false);
         weapon = GetComponent<Weapon>();
         manager = GameObject.Find("Manager").GetComponent<Manager>();
         currentHealth = maxHealth;
@@ -113,7 +119,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update() 
     {
-        if(!photonView.IsMine) 
+        if(!photonView.IsMine) // so other players can see you move gun up and down
         {
             RefreshMultiplayerState();
             return;
@@ -262,6 +268,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if(currentCooldown > 0) currentCooldown -= Time.deltaTime;
         if (isSliding && currentCooldown <= 0)
         {
+            speedlines.Play(); // Speedlines particle effect
+
             sliding = true;
             slideDirection = direction;
             slideTime = lengthOfSlide;
@@ -328,13 +336,41 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         {
             standingCollider.SetActive(false);
             crouchingCollider.SetActive(true);
+            if(!photonView.IsMine) 
+            {
+                standingMesh.SetActive(false);
+                crouchingMesh.SetActive(true);
+                glasses.SetActive(false); // glasses don't show when crouching
+            } 
+            else
+            {
+                standingMesh.SetActive(false);
+                crouchingMesh.SetActive(false);
+                glasses.SetActive(false);
+            }
             weaponParentCurrentPosition += Vector3.down * crouchAmount;
+            // different way
+            //weaponParentCurrentPosition -= new Vector3(0, crouchAmount, 0);
         }
         else
         {
             standingCollider.SetActive(true);
             crouchingCollider.SetActive(false);
+            if(!photonView.IsMine) 
+            {
+                standingMesh.SetActive(true);
+                crouchingMesh.SetActive(false);
+                glasses.SetActive(true);
+            } 
+            else
+            {
+                standingMesh.SetActive(false);
+                crouchingMesh.SetActive(false);
+                glasses.SetActive(false);
+            }
             weaponParentCurrentPosition -= Vector3.down * crouchAmount;
+            //diferent way
+            //weaponParentCurrentPosition += new Vector3(0, crouchAmount, 0);
         }
     }
 

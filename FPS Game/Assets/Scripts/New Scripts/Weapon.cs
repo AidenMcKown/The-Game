@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                 if(Input.GetMouseButtonDown(0) && currentCooldown <= 0)
                 {
                     if (loadout[currentIndex].FireBullet()) { photonView.RPC("Shoot", RpcTarget.All); }
-                    else StartCoroutine(Reload(loadout[currentIndex].reloadTime)); 
+                    else photonView.RPC("ReloadRPC", RpcTarget.All);
                 } 
 
                 // reload
@@ -70,7 +70,7 @@ public class Weapon : MonoBehaviourPunCallbacks
     #region Private Methods
 
     [PunRPC]
-    private void ReloadRPC ()
+    private void ReloadRPC()
     {
         StartCoroutine(Reload(loadout[currentIndex].reloadTime));
     }
