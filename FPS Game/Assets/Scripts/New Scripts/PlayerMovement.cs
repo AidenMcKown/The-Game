@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     private float aimAngle;
 
+    [SerializeField] ParticleSystem speedlines = null;
+
     [SerializeField] KeyCode shiftKey = KeyCode.LeftShift;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode crouchKey = KeyCode.LeftControl;
@@ -113,7 +115,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update() 
     {
-        if(!photonView.IsMine) 
+        if(!photonView.IsMine) // so other players can see you move gun up and down
         {
             RefreshMultiplayerState();
             return;
@@ -262,6 +264,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if(currentCooldown > 0) currentCooldown -= Time.deltaTime;
         if (isSliding && currentCooldown <= 0)
         {
+            speedlines.Play(); // Speedlines particle effect
+
             sliding = true;
             slideDirection = direction;
             slideTime = lengthOfSlide;
