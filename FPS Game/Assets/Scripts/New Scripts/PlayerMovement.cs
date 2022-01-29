@@ -281,12 +281,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
         }
 
-
         // FOV
         if (sliding) 
         { 
             normalCam.fieldOfView = Mathf.Lerp(normalCam.fieldOfView, baseFOV * sprintFOVModifier * 1.25f, Time.deltaTime * 8f);
-            normalCam.transform.localPosition = Vector3.Lerp(normalCam.transform.localPosition, origin + Vector3.down * slideAmount, Time.deltaTime * 6f);
+            normalCam.transform.localPosition = Vector3.Lerp(normalCam.transform.localPosition, origin + Vector3.down * slideAmount, Time.deltaTime * 10f);
         }
         else 
         { 
@@ -366,12 +365,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             } 
             else
             {
-                standingMesh.SetActive(false);
+                standingMesh.SetActive(true);
                 crouchingMesh.SetActive(false);
                 glasses.SetActive(false);
             }
             weaponParentCurrentPosition -= Vector3.down * crouchAmount;
-            //diferent way
+            // diferent way
             //weaponParentCurrentPosition += new Vector3(0, crouchAmount, 0);
         }
     }
