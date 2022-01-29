@@ -192,18 +192,16 @@ public class Weapon : MonoBehaviourPunCallbacks
                 currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
                 
                 //muzzle flash
-                //if (isAiming())
-               // {
-               //     currentWeapon.GetComponent<ParticleSystem>().Transform.right + 1;
-               //     currentWeapon.GetComponent<ParticleSystem>().Play();
-               // }
-               // else
-               // {
+                if (Input.GetMouseButton(1))
+                {
+                    currentWeapon.GetComponentInChildren<ParticleSystem>().transform.right;
                     currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
-               // }
+                }
+                else
+                {
+                    currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
+                }
                 
-                //currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
-                //currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
             }
            
            
