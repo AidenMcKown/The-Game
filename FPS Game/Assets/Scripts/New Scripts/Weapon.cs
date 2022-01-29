@@ -192,16 +192,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                 currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
                 
                 //muzzle flash
-                if (Input.GetMouseButton(1))
-                {
-                    currentWeapon.GetComponentInChildren<ParticleSystem>().transform.right;
-                    currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
-                }
-                else
-                {
-                    currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
-                }
-                
+                currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
             }
            
            
