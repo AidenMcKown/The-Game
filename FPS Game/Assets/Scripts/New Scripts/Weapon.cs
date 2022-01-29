@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviourPunCallbacks
     private int currentHealth;
 
     private bool isReloading = false;
-
+    
     
     #endregion
 
@@ -140,10 +140,14 @@ public class Weapon : MonoBehaviourPunCallbacks
     [PunRPC]
     void Shoot()
     {
+        
+
         if (!isReloading)
          {
             Transform spawn = transform.Find("Cameras/Normal Camera");
 
+            
+            
             // bloom
             Vector3 bloom = spawn.position + spawn.forward * 1000f;
             bloom += Random.Range(-loadout[currentIndex].bloom, loadout[currentIndex].bloom) *spawn.up;
@@ -184,11 +188,27 @@ public class Weapon : MonoBehaviourPunCallbacks
             //gun effects(recoil and kickback)
             if (currentWeapon != null)
             {
+                //recoil
                 currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
+                
+                //muzzle flash
+                //if (isAiming())
+               // {
+               //     currentWeapon.GetComponent<ParticleSystem>().Transform.right + 1;
+               //     currentWeapon.GetComponent<ParticleSystem>().Play();
+               // }
+               // else
+               // {
+                    currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
+               // }
+                
                 //currentWeapon.transform.Rotate(-loadout[currentIndex].recoil, 0, 0);
                 //currentWeapon.transform.position -=currentWeapon.transform.forward * loadout[currentIndex].kickback;
             }
+           
+           
         }
+         
     }
 
     [PunRPC]

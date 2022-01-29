@@ -296,6 +296,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (crouched) normalCam.transform.localPosition = Vector3.Lerp(normalCam.transform.localPosition, origin + Vector3.down * crouchAmount, Time.deltaTime * 6f);
             else normalCam.transform.localPosition = Vector3.Lerp(normalCam.transform.localPosition, origin, Time.deltaTime * 6f);
         }
+
+        
     }
     #endregion
 
