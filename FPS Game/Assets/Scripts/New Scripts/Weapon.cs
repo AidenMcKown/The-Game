@@ -20,12 +20,11 @@ public class Weapon : MonoBehaviourPunCallbacks
     private int currentHealth;
     private GameObject notAiming;
     private GameObject aiming;
-    private GameObject crosshair;
-    private Vector3 scaleChange;
+    
 
     private bool isReloading = false;
     private bool isAiming = false;
-    private bool isAim = false;
+    
     
 
     
@@ -137,6 +136,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                 {
                     // ads
                     anchor.position = Vector3.Lerp(anchor.position, stateADS.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+                   
 
                 
                 }
@@ -144,34 +144,15 @@ public class Weapon : MonoBehaviourPunCallbacks
                 {
                     // hip
                     anchor.position = Vector3.Lerp(anchor.position, stateHip.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
-
+                    
 
                 }
 
-                //Transform anchorCrosshair = crosshair.transform.Find("CrosshairAnchor");
-                //Transform crosshairStateADS = crosshair.transform.Find("HudStates/ADS");
-                //Transform crosshairStateHip = crosshair.transform.Find("HudStates/Hip");
-
-                //if (!isReloading)
-                //{
-                  //  if (isAiming)
-                  //  {
-                    // ads
-                   
-                //    anchorCrosshair.localScale = Vector3.Lerp(anchorCrosshair.localScale, crosshairStateADS.localScale, Time.deltaTime * loadout[currentIndex].aimSpeed );
                 
-                //    }
-               // else
-               // {
-                    // hip
-               //     anchorCrosshair.localScale = Vector3.Lerp(anchorCrosshair.localScale, crosshairStateHip.localScale, Time.deltaTime * loadout[currentIndex].aimSpeed);
-
-
-              //  }
             }
         }
     }
-    
+                   
 
     [PunRPC]
     void Shoot()
@@ -181,7 +162,7 @@ public class Weapon : MonoBehaviourPunCallbacks
         if (!isReloading)
          {
             Transform spawn = transform.Find("Cameras/Normal Camera");
-
+            
             
             
             // bloom
@@ -235,11 +216,13 @@ public class Weapon : MonoBehaviourPunCallbacks
                 {
                     notAiming = GameObject.Find("HipMuzzleFlash");
                     notAiming.GetComponent<ParticleSystem>().Play();
+                   
                 }
                 else 
                 {
                     aiming = GameObject.Find("AdsMuzzleFlash");
                     aiming.GetComponent<ParticleSystem>().Play();
+                   
                 }
                 }
             }
