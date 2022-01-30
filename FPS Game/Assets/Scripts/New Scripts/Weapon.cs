@@ -20,11 +20,13 @@ public class Weapon : MonoBehaviourPunCallbacks
     private int currentHealth;
     private GameObject notAiming;
     private GameObject aiming;
+    private GameObject crosshair;
+    private Vector3 scaleChange;
 
     private bool isReloading = false;
     private bool isAiming = false;
+    private bool isAim = false;
     
-    public GameObject canvas;
 
     
     #endregion
@@ -49,6 +51,7 @@ public class Weapon : MonoBehaviourPunCallbacks
             if(photonView.IsMine)
             {
                 Aim(Input.GetMouseButton(1));
+                
                 
                 if(Input.GetMouseButtonDown(0) && currentCooldown <= 0)
                 {
@@ -125,14 +128,16 @@ public class Weapon : MonoBehaviourPunCallbacks
             Transform anchor = currentWeapon.transform.Find("Anchor");
             Transform stateADS = currentWeapon.transform.Find("States/ADS");
             Transform stateHip = currentWeapon.transform.Find("States/Hip");
-
+            
+            
+            
             if (!isReloading)
             {
                 if (isAiming)
                 {
                     // ads
                     anchor.position = Vector3.Lerp(anchor.position, stateADS.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
-                    
+
                 
                 }
                 else
@@ -142,9 +147,31 @@ public class Weapon : MonoBehaviourPunCallbacks
 
 
                 }
+
+                //Transform anchorCrosshair = crosshair.transform.Find("CrosshairAnchor");
+                //Transform crosshairStateADS = crosshair.transform.Find("HudStates/ADS");
+                //Transform crosshairStateHip = crosshair.transform.Find("HudStates/Hip");
+
+                //if (!isReloading)
+                //{
+                  //  if (isAiming)
+                  //  {
+                    // ads
+                   
+                //    anchorCrosshair.localScale = Vector3.Lerp(anchorCrosshair.localScale, crosshairStateADS.localScale, Time.deltaTime * loadout[currentIndex].aimSpeed );
+                
+                //    }
+               // else
+               // {
+                    // hip
+               //     anchorCrosshair.localScale = Vector3.Lerp(anchorCrosshair.localScale, crosshairStateHip.localScale, Time.deltaTime * loadout[currentIndex].aimSpeed);
+
+
+              //  }
             }
         }
     }
+    
 
     [PunRPC]
     void Shoot()
@@ -197,10 +224,13 @@ public class Weapon : MonoBehaviourPunCallbacks
             //gun effects(recoil and kickback)
             if (currentWeapon != null)
             {
+                if (photonView.IsMine){
                 //recoil
                 currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
                 
+                
                 //muzzle flash
+
                 if (!Input.GetMouseButton(1))
                 {
                     notAiming = GameObject.Find("HipMuzzleFlash");
@@ -211,7 +241,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                     aiming = GameObject.Find("AdsMuzzleFlash");
                     aiming.GetComponent<ParticleSystem>().Play();
                 }
-                
+                }
             }
            
            
@@ -239,3 +269,4 @@ public class Weapon : MonoBehaviourPunCallbacks
 
     #endregion
 }
+
