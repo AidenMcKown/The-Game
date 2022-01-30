@@ -6,7 +6,8 @@ MonoImporter:
   defaultReferences:
   - weaponParent: {instanceID: 0}
   - bulletHolePrefab: {instanceID: 0}
-  - muzzleFlash: {instanceID: 0}
+  - animator: {fileID: 7900616726540773607, guid: c957276edd67311409789cac962bd6d8,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

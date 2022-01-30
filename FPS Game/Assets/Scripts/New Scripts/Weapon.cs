@@ -18,9 +18,14 @@ public class Weapon : MonoBehaviourPunCallbacks
     private int currentIndex;
     private GameObject currentWeapon;
     private int currentHealth;
+    private GameObject notAiming;
+    private GameObject aiming;
 
     private bool isReloading = false;
+    private bool isAiming = false;
     
+    public GameObject canvas;
+
     
     #endregion
 
@@ -127,11 +132,15 @@ public class Weapon : MonoBehaviourPunCallbacks
                 {
                     // ads
                     anchor.position = Vector3.Lerp(anchor.position, stateADS.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+                    
+                
                 }
                 else
                 {
                     // hip
                     anchor.position = Vector3.Lerp(anchor.position, stateHip.position, Time.deltaTime * loadout[currentIndex].aimSpeed);
+
+
                 }
             }
         }
@@ -192,7 +201,17 @@ public class Weapon : MonoBehaviourPunCallbacks
                 currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
                 
                 //muzzle flash
-                currentWeapon.GetComponentInChildren<ParticleSystem>().Play();
+                if (!Input.GetMouseButton(1))
+                {
+                    notAiming = GameObject.Find("HipMuzzleFlash");
+                    notAiming.GetComponent<ParticleSystem>().Play();
+                }
+                else 
+                {
+                    aiming = GameObject.Find("AdsMuzzleFlash");
+                    aiming.GetComponent<ParticleSystem>().Play();
+                }
+                
             }
            
            

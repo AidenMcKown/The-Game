@@ -485,6 +485,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4625
   reloadKey: 114
+  canvas: {fileID: 1359736959870528710, guid: 988d9e7e42930d148adcf44bf3fa5b2f, type: 3}
 --- !u!114 &4516173694987352603
 MonoBehaviour:
   m_ObjectHideFlags: 0
