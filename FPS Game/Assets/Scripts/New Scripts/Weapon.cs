@@ -8,11 +8,14 @@ public class Weapon : MonoBehaviourPunCallbacks
 {
     #region Variables
     public Gun1[] loadout;
+    [HideInInspector] public Gun currentGunData;
+    
     [SerializeField] public Transform weaponParent;
     public KeyCode loadoutKey = KeyCode.Alpha1; // 1 key
     public GameObject bulletHolePrefab;
     public LayerMask canBeShot;
     public KeyCode reloadKey;
+   
 
     private float currentCooldown;
     private int currentIndex;
@@ -21,9 +24,13 @@ public class Weapon : MonoBehaviourPunCallbacks
     private GameObject notAiming;
     private GameObject aiming;
     
+    public GameObject bananaShot;
+    
+    
 
     private bool isReloading = false;
     private bool isAiming = false;
+    
     
     
 
@@ -147,7 +154,8 @@ public class Weapon : MonoBehaviourPunCallbacks
                     
 
                 }
-
+                    
+                
                 
             }
         }
@@ -201,6 +209,7 @@ public class Weapon : MonoBehaviourPunCallbacks
                     }
                 }
             }
+            
 
             //gun effects(recoil and kickback)
             if (currentWeapon != null)
@@ -224,11 +233,19 @@ public class Weapon : MonoBehaviourPunCallbacks
                     aiming.GetComponent<ParticleSystem>().Play();
                    
                 }
+               
+               
                 }
+
             }
            
-           
+            
+            bananaShot = GameObject.Find("Audio Source");
+            bananaShot.GetComponent<AudioSource>().Play();
+            //sound
+            
         }
+            
          
     }
 

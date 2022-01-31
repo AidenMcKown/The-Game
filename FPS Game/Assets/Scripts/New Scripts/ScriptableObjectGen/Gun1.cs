@@ -19,6 +19,8 @@ public class Gun1 : ScriptableObject
 
     private int stash; //current ammo
     private int clip; //current clip
+    public AudioClip bananaShot;
+    public float pitchRandomization;
 
     public void Initialize()
     {
