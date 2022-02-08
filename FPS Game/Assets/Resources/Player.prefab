@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1810664093899376489}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GunSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,6 +337,36 @@ Transform:
   m_Father: {fileID: 1531649983318137455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3072780900771887313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644959196120865316}
+  m_Layer: 0
+  m_Name: MovementSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1644959196120865316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072780900771887313}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.6641672, y: -1.5, z: 0.84032726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1531649983318137455}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3345942788665851443
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +450,7 @@ Transform:
   - {fileID: 587490194147673202}
   - {fileID: 5026457386069220333}
   - {fileID: 1810664093899376489}
+  - {fileID: 1644959196120865316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5643,8 +5674,9 @@ GameObject:
   m_Component:
   - component: {fileID: 735163874061341403}
   - component: {fileID: 9134813397781900158}
+  - component: {fileID: 4707550110450464598}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Banana Shooting Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5674,7 +5706,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eae6d07093b08c849a9e6bab1bf9cd27, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5760,6 +5792,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4707550110450464598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276958657176279982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca79ccdfb3e6be14eb672981aca6d9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 3fb07cd3767f3974183aae8b9bc88980, type: 3}
+  - {fileID: 8300000, guid: 83745a02b01b7f344b65b9f0abece3ce, type: 3}
+  - {fileID: 8300000, guid: 60dc74f7176eded4caf1397cd8be70bf, type: 3}
+  - {fileID: 8300000, guid: e74f91672cc8a2442a0ca27944819261, type: 3}
+  soundKey: 323
 --- !u!1 &7717949653180640596
 GameObject:
   m_ObjectHideFlags: 0
