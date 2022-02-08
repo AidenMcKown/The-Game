@@ -183,24 +183,24 @@ public class Weapon : MonoBehaviourPunCallbacks
             //gun effects(recoil and kickback)
             if (currentWeapon != null)
             {
+                
+                //recoil
+                currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
+                
                 if (photonView.IsMine)
-                {
-                    //recoil
-                    currentWeapon.GetComponent<Animator>().Play("Recoil", 0, 0);
-                        
-                        
+                {    
                     //muzzle flash
-
                     if (!Input.GetMouseButton(1))
                     {
                         notAiming = GameObject.Find("HipMuzzleFlash");
                         notAiming.GetComponent<ParticleSystem>().Play();
-                        
+                    
                     }
                     else 
                     {
-                    aiming = GameObject.Find("AdsMuzzleFlash");
-                    aiming.GetComponent<ParticleSystem>().Play();  
+                        aiming = GameObject.Find("AdsMuzzleFlash");
+                        aiming.GetComponent<ParticleSystem>().Play();
+                            
                     }
                 }
             }
